@@ -1,0 +1,41 @@
+﻿<Page x:Class="GithubStatus.UI.View.OpenUserPullRequestView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GithubStatus.UI.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="OpenUserPullRequestView">
+
+    <Grid>
+        <DataGrid Name="IssueList"
+                  RenderOptions.ClearTypeHint="Enabled"
+                  TextOptions.TextFormattingMode="Display"
+                  SelectionUnit="FullRow"
+                  AutoGenerateColumns="False"
+                  AlternatingRowBackground="#10000000"
+                  ItemsSource="{Binding PullRequests, Mode=OneWay}"
+                  GridLinesVisibility="Horizontal"
+                  CanUserReorderColumns="True"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Author"
+                                    Binding="{Binding Path=User.Login, Mode=OneWay}" />
+
+                <DataGridTextColumn Header="Id"
+                                    Binding="{Binding Path=Number, Mode=OneWay}" />
+
+                <DataGridTextColumn Header="Title"
+                                    Binding="{Binding Path=Title, Mode=OneWay}" />
+
+                <DataGridTextColumn Header="Created"
+                                    Binding="{Binding Path=CreatedAt, Mode=OneWay}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
